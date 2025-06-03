@@ -48,7 +48,8 @@ alias cd="z"
 export PATH=$PATH:/Users/jacksoncrawford/path
 
 # git
-alias gst='git status'
+alias gs='git status'
+alias ga= 'git add'
 alias gaa='git add -A'
 alias gc='git commit'
 alias gcm='git checkout main'
@@ -82,3 +83,7 @@ export OPENSSL_ROOT_DIR_MACOS=~/Qt/Tools/openSsl/mac
 export WC_VERSION_LABEL=Kowhai 
 
 alias wcgadgettool='/Users/jacksoncrawford/repos/wc/build_make/tools/wcgadgettool.app/Contents/MacOS/wcgadgettool'
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
