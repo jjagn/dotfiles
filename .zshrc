@@ -45,8 +45,40 @@ alias ls="eza --icons=always"
 eval "$(zoxide init zsh)"
 alias cd="z"
 
-export NEOVIDE_TITLE_HIDDEN
-export NEOVIDE_FRAME='transparent'
-export NEOVIDE_FORK=1
-
 export PATH=$PATH:/Users/jacksoncrawford/path
+
+# git
+alias gst='git status'
+alias gaa='git add -A'
+alias gc='git commit'
+alias gcm='git checkout main'
+alias gd='git diff'
+alias gdc='git diff --cached'
+# [c]heck [o]ut
+alias co='git checkout'
+alias gbs='git switch'
+alias gbc='git switch -c'
+alias gbl='git branch --all'
+alias gl='git log --oneline --graph --decorate --parents'
+# [f]uzzy check[o]ut
+fo() {
+  git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --header 'git checkout' | xargs git checkout
+}
+alias up='git push'
+alias upf='git push --force'
+alias pu='git pull'
+alias pur='git pull --rebase'
+alias fe='git fetch'
+alias re='git rebase'
+alias lr='git l -30'
+alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git Root
+alias hs='git rev-parse --short HEAD'
+alias hm='git log --format=%B -n 1 HEAD'
+
+export QT_ROOT_DIR=/Users/jacksoncrawford/repos/Qt6.8.0/6.8.0/macos
+export OPENSSL_ROOT_DIR=~/OpenSSL
+export GIT_EXECUTABLE=git
+export OPENSSL_ROOT_DIR_MACOS=~/Qt/Tools/openSsl/mac
+export WC_VERSION_LABEL=Kowhai 
+
+alias wcgadgettool='/Users/jacksoncrawford/repos/wc/build_make/tools/wcgadgettool.app/Contents/MacOS/wcgadgettool'
