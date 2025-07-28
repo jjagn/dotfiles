@@ -1,0 +1,10 @@
+theme = gruvbox-dark
+font-family = BerkeleyMono Nerd Font
+font-feature = -calt, -liga, -dlig
+# macos-titlebar-style = hidden
+# window-decoration = none
+
+background-opacity = 0.9
+background-blur = 20
+
+macos-option-as-alt = true

@@ -49,7 +49,7 @@ export PATH=$PATH:/Users/jacksoncrawford/path
 
 # git
 alias gs='git status'
-alias ga= 'git add'
+alias ga='git add'
 alias gaa='git add -A'
 alias gc='git commit'
 alias gcm='git checkout main'
@@ -69,7 +69,7 @@ alias up='git push'
 alias upf='git push --force'
 alias pu='git pull'
 alias pur='git pull --rebase'
-alias fe='git fetch'
+alias gf='git fetch'
 alias re='git rebase'
 alias lr='git l -30'
 alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git Root
@@ -82,8 +82,12 @@ export GIT_EXECUTABLE=git
 export OPENSSL_ROOT_DIR_MACOS=~/Qt/Tools/openSsl/mac
 export WC_VERSION_LABEL=Kowhai 
 
+alias c='clear'
+alias sz='source ~/.zshrc'
+
 alias wcgadgettool='/Users/jacksoncrawford/repos/wc/build_make/tools/wcgadgettool.app/Contents/MacOS/wcgadgettool'
 
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+autoload -Uz compinit && compinit
