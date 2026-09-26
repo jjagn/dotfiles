@@ -15,5 +15,5 @@ pretty_git_log() {
 }
 
 remove_untracked_files() {
-  git ls-files --other --exclude-standard | xargs rm -rf
+  git clean -fd
 }
