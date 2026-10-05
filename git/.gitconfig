@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Jackson Crawford
-	email = jackson.crawford@wellnomics.com
+	email = jacksoncrawford2100@gmail.com
 
 [alias]
   co = checkout
