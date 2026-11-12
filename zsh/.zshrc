@@ -12,7 +12,10 @@ export EDITOR=nvim
 path=("$HOME/.local/bin" $path "$HOME/path")
 [[ -d $HOME/go/bin ]] && path+=("$HOME/go/bin")
 
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# first existing file wins (macOS homebrew, linux apt)
+_source_first() { local f; for f in "$@"; do [[ -r $f ]] && { source "$f"; return; }; done }
+_source_first /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
+              /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # history setup (atuin is primary; keep plain zsh history from being truncated)
 SAVEHIST=50000
@@ -25,6 +28,9 @@ setopt HIST_IGNORE_SPACE      # Dont record an entry starting with a space.
 
 # eza
 alias ls="eza --icons=auto"
+alias ll="eza -l --icons=auto --group-directories-first --git"
+alias la="eza -la --icons=auto --group-directories-first --git"
+alias lt="eza --tree --level=2 --icons=auto --group-directories-first"
 
 # git
 alias gs='git status'
@@ -45,6 +51,7 @@ fo() {
   git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --header 'git checkout' | xargs git checkout
 }
 alias up='git push'
+alias uptag='git push origin --tags'
 alias upf='git push --force'
 alias pu='git pull'
 alias pur='git pull --rebase'
@@ -60,16 +67,22 @@ export GIT_EXECUTABLE=git
 alias c='clear'
 alias sz='source ~/.zshrc'
 
+# WSL: open files/URLs with Windows defaults
+if [[ -n $WSL_DISTRO_NAME ]]; then
+  alias open='explorer.exe'
+fi
+
 # Added by LM Studio CLI (lms)
 path+=("$HOME/.lmstudio/bin")
 # End of LM Studio CLI section
 
-. "$HOME/.atuin/bin/env"
+[[ -r "$HOME/.atuin/bin/env" ]] && . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
 autoload -Uz compinit && compinit
 
 # must come after all widgets are defined
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+_source_first /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+              /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zoxide must be initialized last
 eval "$(zoxide init zsh)"
